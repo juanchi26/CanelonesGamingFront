@@ -1,7 +1,9 @@
 import { useRouter } from "next/router"
 import styles from "./JoinLayout.module.scss"
+import { map } from "lodash"
 import { Layout } from "@/components/layout"
-import { Container } from "semantic-ui-react"
+import { data } from "./JoinLayout.data"
+import { Container, Icon } from "semantic-ui-react"
 import { userAuth } from "@/hooks"
 import { useEffect } from "react"
 
@@ -25,7 +27,17 @@ export function JoinLayout(props) {
       <Layout.Logo/>
       <div>
         <div className={styles.left}>
-            INFORMACION
+            {map(data, (item, index) =>(
+              <div key={index}>
+                <Icon name={item.icon}/>
+                <div >
+                  <h3>
+                    {item.title}
+                  </h3>
+                  <span>{item.description}</span>
+                </div>
+              </div>
+            ))}
         </div>
         <div className= {styles.right}>
             { children }

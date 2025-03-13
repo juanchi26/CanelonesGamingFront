@@ -1,9 +1,9 @@
 import { JoinLayout } from "@/layouts"
-
+import { RegisterForm } from "@/components/Auth"
 export default function RegisterPage() {
   return (
     <div>
-      <JoinLayout>registro...</JoinLayout>
+      <JoinLayout><RegisterForm/></JoinLayout>
     </div>
   )
 }
