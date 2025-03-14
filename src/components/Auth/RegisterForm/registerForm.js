@@ -1,19 +1,25 @@
 import { Button, Form } from "semantic-ui-react"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useFormik } from "formik"
+import { authCtrl } from "@/api"
 import { initialValues, validationSchema } from "./RegisterForm.form"
 import styles from "./RegisterForm.module.scss"
 
 
 export function RegisterForm() {
-
+    const router = useRouter()
     const formik = useFormik({
         initialValues: initialValues(),
         validateOnChange: false,
         validationSchema: validationSchema(),
-        onSubmit: (formValue) => {
-            console.log("ENVIADO")
-            console.log(formValue)
+        onSubmit: async (formValue) => {
+            try {
+              await authCtrl.register(formValue.email, formValue.password);
+              router.push(`/join/confirmation?email=${formValue.email}`)
+            } catch (error) {
+              console.error(error)
+            }
         }
     })
 
