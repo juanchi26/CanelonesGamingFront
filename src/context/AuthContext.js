@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext } from "react"
-import { userCtrl } from "@/api"
+import { useRouter } from "next/router"
+import { authCtrl, userCtrl } from "@/api"
 
 export const AuthContext = createContext()
 
@@ -8,7 +9,7 @@ export function AuthProvider(props) {
     const [user, setUser] = useState(null)
     const [isAdmin, setIsAdmin] = useState(false)
     const [loading , setLoading ] = useState(true)
-
+    const router = useRouter()
 
     useEffect(() => {
         (async () => {
@@ -34,10 +35,26 @@ export function AuthProvider(props) {
     }
    } 
 
+   const logout =  () => {
+        setUser(null)
+        authCtrl.logout()
+        router.push("/")
+
+   }
+
+   const updateUser = (key, value) => {
+        setUser({
+            ...user,
+            [key]: value
+        })
+   }
+
     const data = {
         user,
         login,
-        isAdmin
+        isAdmin,
+        logout,
+        updateUser
 
     }
 

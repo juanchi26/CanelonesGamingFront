@@ -52,7 +52,12 @@ async function retriveSession() {
 }
 
 async function logout(){
-    console.log("cerrar sesion")
+    try {  
+        await signOut()
+        
+    } catch (error) {
+        throw error 
+    }
 }
 
 export const authCtrl = {
