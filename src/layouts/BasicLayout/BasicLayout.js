@@ -18,10 +18,15 @@ export function BasicLayout(props) {
             <Search className={styles.search}/>
           </div>
           <div>
-             { isAdmin && <span>admin</span> }
+             { isAdmin && <Layout.adminButton/> }
             <Layout.Cuenta/>
             <Layout.Carrito/>
           </div>
+        </Container>
+      </div>
+      <div className={styles.border}>
+        <Container>
+          <Layout.CategoriesMenu/>
         </Container>
       </div>
       {children}

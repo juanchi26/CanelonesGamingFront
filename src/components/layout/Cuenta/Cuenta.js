@@ -12,6 +12,6 @@ export function Cuenta() {
 
 
   return (
-    <Link href={url} className="styles.cuenta"><Icon name="user"/>{user?.userEmail ?  `${user.userEmail.slice(0, 14)}...` : "Entrar"}</Link>
+    <Link href={url} className={styles.cuenta}><Icon name="user"/>{user?.userEmail ?  `${user.userEmail.slice(0, 14)}...` : "Entrar"}</Link>
   )
 }
