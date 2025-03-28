@@ -1,0 +1,12 @@
+@import "~/src/scss/scss/index.scss";
+
+.tabs {
+    position: relative;
+    margin-top: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
