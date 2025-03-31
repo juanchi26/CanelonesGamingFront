@@ -8,7 +8,7 @@ const NOT_FOUND_IMAGE = "/img/imgnotfound.jpg"
 
 export function Productos(props) {
 
-    const {product} = props
+    const {product, onReload} = props
 
 
     const [image, setImage] = useState(NOT_FOUND_IMAGE)

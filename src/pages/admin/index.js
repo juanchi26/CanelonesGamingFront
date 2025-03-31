@@ -8,9 +8,16 @@ import { Search } from "@/components/Shared"
 import { Products } from "@/components/Admin"
 export default function AdminPage() {
 
+    const [reload, setReload] = useState(false)
     const { isAdmin } = userAuth()
 
     const router = useRouter()
+
+    const onReload = () => {
+        setReload((prevState) => !prevState)
+    }
+
+
 
     if(!isAdmin){
         router.push("/")
@@ -24,9 +31,9 @@ export default function AdminPage() {
                 <Tab.Pane>
                     <div className={styles.actions}>
                         <Search queryName="searchAdmin"/>
-                        <Products.AddProduct/>
+                        <Products.AddProduct onReload={onReload}/>
                     </div>
-                    <Products.ListProducts/>
+                    <Products.ListProducts reload={reload} onReload={onReload}/>
                 </Tab.Pane>
             )
         },

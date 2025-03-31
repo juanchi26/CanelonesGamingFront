@@ -8,7 +8,8 @@ import { useRouter } from "next/router"
 
 const ITEMS_POR_PAGINA = 10
 
-export function ListProducts() {
+export function ListProducts(props) {
+    const { reload, onReload } = props
     const [productos, setProductos] = useState(null)
     const [totalPages, setTotalPages] = useState(null)
 
@@ -32,7 +33,7 @@ export function ListProducts() {
                 console.error(error)
             }
         })()
-    }, [query.page, query.searchAdmin])
+    }, [reload, query.page, query.searchAdmin])
 
     if(!productos) return <Loading text="Carganto Productos"/>
 
@@ -68,7 +69,7 @@ export function ListProducts() {
           )}
           {map(productos, (product) => (
             <Table.Row key={product.prodID}>
-              <Productos product={product}/>
+              <Productos product={product} onReload={onReload}/>
             </Table.Row>
           ))}
         </Table.Body>
