@@ -1,6 +1,7 @@
 import { Button } from "semantic-ui-react"
 import { useState } from "react"
 import { Modal } from "@/components/Shared"
+import { Products } from "@/components/Admin"
 export function AddProduct() {
     const [openModal, setOpenModal] = useState(false)
 
@@ -10,7 +11,7 @@ export function AddProduct() {
     <>
       <Button primary onClick={openCloseModal}>Agregar Producto</Button>
       <Modal.Basic show={openModal} onClose={openCloseModal} title="Nuevo Producto">
-        <h2>contenido del modal</h2>
+        <Products.ProductForm/>
       </Modal.Basic>
     </>
   )
