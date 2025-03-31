@@ -23,8 +23,8 @@ export default function AdminPage() {
             render: () => (
                 <Tab.Pane>
                     <div className={styles.actions}>
-                        <Search/>
-                        <span>Agragar productos</span>
+                        <Search queryName="searchAdmin"/>
+                        <Products.AddProduct/>
                     </div>
                     <Products.ListProducts/>
                 </Tab.Pane>
