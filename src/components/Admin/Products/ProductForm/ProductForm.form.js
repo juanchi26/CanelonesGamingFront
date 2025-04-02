@@ -1,14 +1,14 @@
 import * as Yup from "yup"
 
 
-export function initialValues(){
+export function initialValues(data){
     return {
-        ProdTitle: "",
-        ProdDescription: "",
-        ProdPrice: "",
-        ProdStock: "",
-        ProdPath:"",
-        ProdCategId: null
+        ProdTitle: data?.prodTitle || "",
+        ProdDescription: data?.prodDescription || "",
+        ProdPrice: data?.prodPrice || "",
+        ProdStock: data?.prodStock || "",
+        ProdPath: data?.prodPath || "",
+        ProdCategId: data?.prodCategId || null
 
     }
 }

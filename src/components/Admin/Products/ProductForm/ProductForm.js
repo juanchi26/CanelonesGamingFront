@@ -11,7 +11,7 @@ import { initialValues, validationSchema } from "./ProductForm.form"
 
 export function ProductForm(props) {
 
-    const  { onClose, onReload } = props
+    const  { onClose, onReload, product } = props
 
     const [categories, setCategories] = useState([])
 
@@ -33,14 +33,19 @@ export function ProductForm(props) {
 
 
     const formik = useFormik({
-        initialValues: initialValues,
-        validationSchema: validationSchema,
+        initialValues: initialValues(product),
+        validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async(formValue) => {
             try {
-                await productsCtrl.create(formValue)
+                if(product){
+                    await productsCtrl.update(formValue, product.prodID)
+                }else {
+                    await productsCtrl.create(formValue)
+                }
                 onReload()
                 onClose()
+                
             } catch (error) {
                 console.error(error)
             }
