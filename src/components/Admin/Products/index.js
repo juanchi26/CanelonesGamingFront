@@ -5,5 +5,6 @@ import { ProductForm } from "./ProductForm"
 export const Products = {
     ListProducts,
     AddProduct,
-    ProductForm
+    ProductForm,
+
 }

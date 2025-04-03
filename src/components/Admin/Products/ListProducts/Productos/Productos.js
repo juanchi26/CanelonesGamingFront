@@ -4,6 +4,7 @@ import { Icon, Image, Table } from "semantic-ui-react"
 import { Modal } from "@/components/Shared"
 import { ProductForm } from "../../ProductForm"
 import { fn } from "@/utils"
+import { ProductImageForm } from "../../ProductImageForm"
 import { useEffect, useState } from "react"
 
 const NOT_FOUND_IMAGE = "/img/imgnotfound.jpg"
@@ -42,6 +43,13 @@ export function Productos(props) {
       setOpenModal(true)
     }
 
+
+    const openEditImageProduct = () => {
+      setModalContent(<ProductImageForm onClose={closeModal} onReload={onReload} productId={product.prodID}/>)
+      setOpenModal(true)
+    }
+
+
   return (
     <>
       <Table.Cell>{product.prodID}</Table.Cell>
@@ -51,7 +59,7 @@ export function Productos(props) {
       <Table.Cell><strong>{product.prodStock}</strong></Table.Cell>
       <Table.Cell className={styles.actions}>
         <Icon name="pencil" link onClick={openEditProduct}/>
-        <Icon name="image" link/>
+        <Icon name="image" link onClick={openEditImageProduct}/>
         <Icon name="trash" link/>
       </Table.Cell>
 
