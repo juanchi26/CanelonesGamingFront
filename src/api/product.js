@@ -67,9 +67,28 @@ async function updateProduct(data, productId) {
     }
 }
 
+async function updateImage(productId, image){
+    try {
+        const url = `${ENV.MEDIA_API}/${productId}.jpg`
+        const params = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "image/jpeg",
+            },
+            body: image,
+
+        }
+        const response = await authFetch(url, params)
+        if(response.status !== 200) throw response
+        return true
+    } catch (error) {
+        throw error
+    }
+}
 
 export const productsCtrl = {
     getAll: getAllProducts,
     create: createProduct,
-    update: updateProduct
+    update: updateProduct,
+    updateImage,
 }

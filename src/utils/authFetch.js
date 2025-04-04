@@ -2,7 +2,7 @@ import { authCtrl } from "@/api"
 
 export async function authFetch(url, params) {
     const token = await authCtrl.retriveSession()
-
+    console.log(token)
     const logout = () =>{
         authCtrl.logout()
         window.location.replace("/")
@@ -16,7 +16,8 @@ export async function authFetch(url, params) {
                 headers: {
                     ...params?.headers,
                     Authorization: token
-                }
+                },
+                
         }
 
         try {
