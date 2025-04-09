@@ -35,7 +35,7 @@ export function ListProducts(props) {
         })()
     }, [reload, query.page, query.searchAdmin])
 
-    if(!productos) return <Loading text="Carganto Productos"/>
+    if(!productos) return <Loading text="Cargando Productos"/>
 
   return (
     <div>

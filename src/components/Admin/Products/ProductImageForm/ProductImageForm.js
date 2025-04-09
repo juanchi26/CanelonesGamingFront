@@ -11,7 +11,7 @@ export function ProductImageForm(props) {
 
     const  { onClose, onReload, productId } = props
     const [loading, setLoading] = useState(false)
-
+    
     const formik = useFormik({
       initialValues: initialValues(),
       validationSchema: validationSchema(),
@@ -28,19 +28,23 @@ export function ProductImageForm(props) {
             
             console.log(image)
             await productsCtrl.updateImage(productId, image)
-
+            
             onReload()
             onClose()
+            
+            
           }
-
+      
+          
           
         } catch (error) {
           console.error(error)
         }
+        
       }
     })
-
-
+    
+    
     const onDrop = useCallback((acceptedFile)=>{
         const file = acceptedFile[0]
         console.log(file)
