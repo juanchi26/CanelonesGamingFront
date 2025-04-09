@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import { userAuth } from "@/hooks"
 import styles from "./admin.module.scss"
 import { Search } from "@/components/Shared"
-import { Products } from "@/components/Admin"
+import { Products, Category } from "@/components/Admin"
 export default function AdminPage() {
 
     const [reload, setReload] = useState(false)
@@ -45,9 +45,9 @@ export default function AdminPage() {
                 <Tab.Pane>
                     <div className={styles.actions}>
                         <div/>
-                        <span>Agregar Categoria</span>
+                        <Category.AddCategory onReload={onReload}/>
                     </div>
-                    <h2>categorias</h2>
+                    <Category.ListCategories reload={reload} onReload={onReload}/>
                 </Tab.Pane>
             )
         },

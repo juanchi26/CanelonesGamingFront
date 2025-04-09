@@ -1,4 +1,6 @@
-import { ENV } from "@/utils"
+import { authFetch, ENV } from "@/utils"
+import { method } from "lodash"
+
 
 
 async function getAllCategories() {
@@ -18,6 +20,29 @@ async function getAllCategories() {
 }
 
 
+async function createCategory(data){
+    try {
+        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.CATEGORY}`
+        const params = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                
+            },
+            body: JSON.stringify(data)
+        }
+        const response = await authFetch(url, params)
+        
+
+        if(response.status !== 200) throw result
+        return true
+    } catch (error) {
+        throw error
+    }
+}
+
+
 export const categoryCtrl = {
     getAll: getAllCategories,
+    create: createCategory
 }

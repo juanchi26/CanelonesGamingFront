@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import {  Table } from "semantic-ui-react"
 import { size, map } from "lodash"
 import { productsCtrl } from "@/api"
-import { Loading, Pagination } from "@/components/Shared"
+import { Loading, Pagination, NoResult } from "@/components/Shared"
 import { Productos } from "./Productos"
 import { useRouter } from "next/router"
 
@@ -64,7 +64,7 @@ export function ListProducts(props) {
         <Table.Body>
           {size(productos) === 0 && (
             <Table.Cell colSpan="5" >
-              <p>No hay resultados</p>
+              <NoResult text="No hay productos"/>
             </Table.Cell>
           )}
           {map(productos, (product) => (
