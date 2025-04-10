@@ -7,15 +7,23 @@ import { categoryCtrl } from "@/api"
 
 export  function CategoryForm(props) {
 
-    const { onClose, onReload } = props
+    const { onClose, onReload, category } = props
 
     const formik = useFormik({
-        initialValues: initialValues(),
+        initialValues: initialValues(category),
         validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
+
+              if(category){
+                await categoryCtrl.update(category.categId, formValue)
+              }else{
                 await categoryCtrl.create(formValue)
+              }
+
+
+                
                 onReload()
                 onClose()
             } catch (error) {

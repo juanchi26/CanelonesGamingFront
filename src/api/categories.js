@@ -1,5 +1,5 @@
 import { authFetch, ENV } from "@/utils"
-import { method } from "lodash"
+import { method, update } from "lodash"
 
 
 
@@ -42,7 +42,49 @@ async function createCategory(data){
 }
 
 
+async function updateCategory(id, data){
+    try {
+        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.CATEGORY}/${id}`
+        const params = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        }
+
+        const response = await authFetch(url, params)
+        
+        if(response.status !== 200) throw result
+        return true
+
+    } catch (error) {
+        throw error
+    }
+}
+
+
+async function deleteCategory(id){
+    try {
+        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.CATEGORY}/${id}`
+        const params = {
+            method: "DELETE",
+        }
+
+        const response = await authFetch(url, params)
+
+        if(response.status !== 200) throw response
+        return true
+
+
+    } catch (error) {
+        throw error
+    }
+}
+
 export const categoryCtrl = {
     getAll: getAllCategories,
-    create: createCategory
+    create: createCategory,
+    update: updateCategory,
+    delete: deleteCategory,
 }

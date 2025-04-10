@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import { userAuth } from "@/hooks"
 import styles from "./admin.module.scss"
 import { Search } from "@/components/Shared"
-import { Products, Category } from "@/components/Admin"
+import { Products, Category, User } from "@/components/Admin"
 export default function AdminPage() {
 
     const [reload, setReload] = useState(false)
@@ -55,7 +55,7 @@ export default function AdminPage() {
             menuItem: "Usuarios",
             render: () => (
                 <Tab.Pane>
-                    <h2>Usuarios</h2>
+                    <User.List/>
                 </Tab.Pane>
             )
         }

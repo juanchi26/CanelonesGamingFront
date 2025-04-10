@@ -1,10 +1,10 @@
 import * as Yup from "yup"
 
 
-export function initialValues() {
+export function initialValues(data) {
   return {
-    CategName: "",
-    CategPath: "",
+    CategName:  data? data.categName : "",
+    CategPath: data? data.categPath : "",
   }
 }
 
