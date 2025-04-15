@@ -1,6 +1,7 @@
 import { Container, MenuItem, Tab } from "semantic-ui-react"
 import { BasicLayout } from "@/layouts"
 import styles from "./account.module.scss"
+import { Separator } from "@/components/Shared"
 import { Settings } from "@/components/Account"
 import { userAuth } from "@/hooks"
 
@@ -15,7 +16,9 @@ export default function AccountPage() {
             menuItem: {content: "Mis datos", icon: "user outline"},
             render: () => (
                 <Tab.Pane>
-                    <Settings.AvatarForm/>  
+                    <Settings.AvatarForm/>
+                    <Separator height={50} />
+                    <Settings.ChangeNameForm/>  
                 </Tab.Pane>
             )
         },
