@@ -4,10 +4,14 @@ import styles from "./account.module.scss"
 import { Separator } from "@/components/Shared"
 import { Settings, Address } from "@/components/Account"
 import { userAuth } from "@/hooks"
-
+import { useState } from "react"
 
 
 export default function AccountPage() {
+
+    const [reload, setReload] = useState(false)
+
+    const onReload = () => setReload((prevState) => !prevState)
 
     const  { logout } = userAuth()
 
@@ -27,7 +31,8 @@ export default function AccountPage() {
             menuItem: {content: "Mis direcciones", icon: "map outline"},
             render: () => (
                 <Tab.Pane>
-                    <Address.ListAddress/>
+                    <Address.AddAddress onReload={onReload}/>
+                    <Address.ListAddress reload={reload} onReload={onReload}/>
                 </Tab.Pane>
             )
         },

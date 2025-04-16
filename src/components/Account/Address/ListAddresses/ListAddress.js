@@ -5,7 +5,8 @@ import { size, map } from "lodash"
 import { addressCtrl } from "@/api"
 import { Loading, NoResult } from "@/components/Shared"
 
-export function ListAddress() {
+export function ListAddress(props) {
+    const { reload, onReload } = props
     const [addresses, setAddresses] = useState(null)
 
     useEffect(() => {
@@ -17,7 +18,7 @@ export function ListAddress() {
                 console.error(error)
             }
         })()
-    },[])
+    },[reload])
 
 
     if(!addresses){
@@ -29,7 +30,7 @@ export function ListAddress() {
     <div className={styles.addresses}>
         {size(addresses) === 0 && <NoResult text="Crea tu primera dirección" />}
         {map(addresses, (address) => (
-            <Address  key={address.addId} address={address}/>
+            <Address  key={address.addId} address={address} onReload={onReload}/>
         ))}
     </div>
   )
