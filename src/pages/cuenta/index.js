@@ -2,8 +2,9 @@ import { Container, MenuItem, Tab } from "semantic-ui-react"
 import { BasicLayout } from "@/layouts"
 import styles from "./account.module.scss"
 import { Separator } from "@/components/Shared"
-import { Settings } from "@/components/Account"
+import { Settings, Address } from "@/components/Account"
 import { userAuth } from "@/hooks"
+
 
 
 export default function AccountPage() {
@@ -26,7 +27,7 @@ export default function AccountPage() {
             menuItem: {content: "Mis direcciones", icon: "map outline"},
             render: () => (
                 <Tab.Pane>
-                    <h2>Direcciones del Usuario</h2>
+                    <Address.ListAddress/>
                 </Tab.Pane>
             )
         },
