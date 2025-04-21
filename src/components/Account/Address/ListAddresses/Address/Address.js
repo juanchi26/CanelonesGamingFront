@@ -11,12 +11,28 @@ export function Address(props) {
 
     const { address,onReload } = props
     const [showEdit, setShowEdit] = useState(false)
+    const [showDelete, setShowDelete] = useState(false)
 
 
     const openCloseEdit = () => {
         setShowEdit((prevState) => !prevState)
     }
 
+    const openCloseDelete = () => {
+        setShowDelete((prevState) => !prevState)
+    }
+
+
+
+    const onDelete = async () => {
+      try {
+        await addressCtrl.delete(address.addId)
+        onReload()
+        openCloseDelete()
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
   return (
     <>
@@ -33,11 +49,16 @@ export function Address(props) {
                 <Icon name="pencil" />
             </Button>
 
-            <Button primary icon>
+            <Button primary icon onClick={openCloseDelete} >
                 <Icon name="delete" />
             </Button>
         </div>
       </div>
+
+
+      <Modal.Confirm open={showDelete} onCancel={openCloseDelete} onConfirm={onDelete} content={`Seguro que queres eliminar ${address.addTitle}`}/>
+
+
 
       <Modal.Basic show={showEdit} onClose={openCloseEdit} title="Editar Direccion" size="small">
         <AddressForm onClose={openCloseEdit} onReload={onReload} address={address} />

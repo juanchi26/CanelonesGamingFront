@@ -65,8 +65,29 @@ async function updateAddress(id, data){
     }
 }
 
+
+async function deleteAddress(id){
+    try {
+        const url = `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}/${id}`;
+
+        const params = {
+            method: "DELETE"
+        }
+
+        const response = await authFetch(url, params)
+
+        if(response.status !== 200) throw response
+        return true
+
+
+    } catch (error) {
+        throw error
+    }
+}
+
 export const addressCtrl = {
     getAll: getAllAddresses,
     create: createAddress,
     update: updateAddress,
+    delete: deleteAddress,
 }

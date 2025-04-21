@@ -9,7 +9,7 @@ export function AddressForm(props) {
         initialValues: initialValues(address),
         validationSchema: validationSchema(),
         validateOnChange: false,
-        onSubmit: async (formValue ) =>{
+        onSubmit: async ( formValue ) =>{
             try {
                 if(address){
                     await addressCtrl.update(address.addId, formValue)
