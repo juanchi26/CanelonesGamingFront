@@ -23,12 +23,7 @@ export  const data = [
         image: "/img/categories-home/ratones.jpg",
         link: "/categories/ratones",
     },
-    {
-        id: 5,
-        name: "Celulares",
-        image: "/img/categories-home/telefonos.jpg",
-        link: "/categories/celulares",
-    },
+    
     {
         id: 6,
         name: "Teclados",

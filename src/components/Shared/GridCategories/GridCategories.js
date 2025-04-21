@@ -9,7 +9,7 @@ export function GridCategories() {
       {map(data, (category) => (
         <Link key={category.id} href={category.link}>
             <div className={styles.category}>
-                <Image src={category.image} alt={category.name} />
+                <Image src={category.image} alt={category.name} className={styles.img} />
             </div>
         </Link>
       ))}
