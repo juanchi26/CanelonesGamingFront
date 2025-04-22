@@ -13,6 +13,7 @@
     "amazon-cognito-identity-js": "^6.3.12",
     "aws-amplify": "^6.13.4",
     "aws-sdk": "^2.1692.0",
+    "classnames": "^2.5.1",
     "formik": "^2.4.6",
     "lodash": "^4.17.21",
     "next": "15.2.2",
