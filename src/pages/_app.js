@@ -1,5 +1,5 @@
 import 'semantic-ui-css/semantic.min.css';
-import { AuthProvider } from "@/context"
+import { AuthProvider, SearchProvider } from "@/context"
 import { initAmplify } from "@/utils"
 import "@/scss/scss/global.scss"
 
@@ -12,7 +12,9 @@ export default function App(props) {
 
   return (
   <AuthProvider>
-    <Component {...pageProps} />
+    <SearchProvider>
+      <Component {...pageProps} />
+    </SearchProvider>
   </AuthProvider>
   )
 
