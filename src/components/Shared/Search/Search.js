@@ -25,5 +25,5 @@ export function Search(props) {
     }
 
 
-  return <Input placeholder={placeholder} icon={{name: "search", link: true}} className={className} onChange={onChange} value={inputValue}/>
+  return <Input placeholder={placeholder} icon={{name: inputValue ? "close" : "Buscar", link: true, onClick: clearSearch}} className={className} onChange={onChange} value={inputValue}/>
 }

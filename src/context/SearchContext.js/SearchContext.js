@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from "next/router"
 import { productsCtrl } from "@/api"
-import { Separator } from "@/components/Shared"
+import { Separator, GridProducts } from "@/components/Shared"
 import styles from "./SearchContext.module.scss"
+import { Container } from "semantic-ui-react"
 
 export function SearchProvider(props){
 
@@ -51,7 +52,7 @@ export function SearchProvider(props){
                         </p>
                     </div>
                     <Separator height={20}/> 
-                    <h3>Resultados del buscador</h3>
+                    <GridProducts products={products}  columns={6} classProduct={styles.product}/>
                 </div>
             )}
         </>
